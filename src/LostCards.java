@@ -146,6 +146,8 @@ public class LostCards {
                 boolean faceDown = false;
                 boolean faceCard = false;
 
+
+
                 //these remove missing cards
                 if (cardSymbol.equals("K") && suitSymbol.equals("♠")){
                     System.out.println("Holy shit!");
@@ -163,83 +165,85 @@ public class LostCards {
                     System.out.println("Holy shit!");
                     continue;
                 }
-
-
-                //this checks if a card is torn by checking if the card is divisible by 3 AND if the suit symbol is EITHER hearts or diamonds
-                if ( (cardValue % 3 == 0) && (suitSymbol.equals("♡") || suitSymbol.equals("♢")) ){
-                    tornCard = true;
-                }
-                //then we check if a card is not torn (false) ; it is torn (true), then then it is output as such and the program returns to the start
-                if (tornCard != false){
-                    System.out.println("-" + cardSymbol + suitSymbol + "-");
-                    continue;
-                }
-
-
                 //this checks if a card is a face card (non-numeric)
                 if (cardSymbol.equals("A") || cardSymbol.equals("J") || cardSymbol.equals("Q") || cardSymbol.equals("K")) {
                     faceCard = true;
                 }
-                //if the card is not a face card AND its suit is EITHER heart or clubs, then it is water damaged
+
+                //this checks if a card is torn by checking if the card is divisible by 3 AND if the suit symbol is EITHER hearts or diamonds
+                if ( (cardValue % 3 == 0) && (suitSymbol.equals("♡") || suitSymbol.equals("♢")) ) {
+                    tornCard = true;
+                }
+
+                //if the card is a face card AND its suit is EITHER heart or clubs, then it is water damaged
                 if ((faceCard != false) && (suitSymbol.equals("♡") || suitSymbol.equals("♣"))){
                     waterDamaged = true;
                 }
-                //now we check if a card is not water damaged (false); it is water damaged (true); program outputs the result if true and returns
-                if (waterDamaged != false){
+                //check if card fulfills both torn and water damaged conditions
+                if (tornCard != false && waterDamaged != false){
+                    System.out.println("-~" + cardSymbol + suitSymbol + "~-");
+                }//if not both then we check if a card is not torn (false) ; it is torn (true),
+                // then it is output as such and the program returns to the start
+                else if (tornCard != false){
+                    System.out.println("-" + cardSymbol + suitSymbol + "-");
+                    continue;
+                }//now we check if a card is not water damaged (false); it is water damaged (true);
+                // program outputs the result if true and returns
+                else if (waterDamaged != false){
                     System.out.println("~"+cardSymbol+suitSymbol+"~");
                     continue;
                 }
 
 
-/* * Any card whose value is the same as the number of letters in the card's suit (in plural form) is face down. All other
- * cards are face up. For example, the 6 of Hearts would be face down because "Hearts" is 6 letters long and the value
- * of the card is 6.
-*/
-                //here we determine how many characters are in each suit's word
+
+
+                /*//here we determine how many characters are in each suit's word
 
                 //initialize a new string containing the suit word
                 String clubs = "clubs";
                 //set an integer equal to the suit word string run through a length method
                 int clubsLength = clubs.length();
-                //verify the method ran correctly
-                System.out.println("Clubs is " + clubsLength + " characters long.");
 
                 String diamonds = "diamonds";
                 int diamondsLength = diamonds.length();
-                System.out.println("Diamonds is " + diamondsLength + " characters long.");
 
                 String hearts = "hearts";
                 int heartsLength = hearts.length();
-                System.out.println("Hearts is " + heartsLength + " characters long.");
 
                 String spades = "spades";
                 int spadesLength = spades.length();
-                System.out.println("Spades is " + spadesLength + " characters long.");
 
-/* * Any card whose value is the same as the number of letters in the card's suit (in plural form) is face down. All other
- * cards are face up. For example, the 6 of Hearts would be face down because "Hearts" is 6 letters long and the value
- * of the card is 6.
-*/
+
                 if (suitSymbol.equals("♣") && cardValue == clubsLength){
                     faceDown = true;
                 }
-                if (faceDown != false){
-                    System.out.println("[**]");
-                    continue;
+                if (suitSymbol.equals("♢") && cardValue == diamondsLength){
+                    faceDown = true;
+                }
+                if (suitSymbol.equals("♡") && cardValue == heartsLength){
+                    faceDown = true;
+                }
+                if (suitSymbol.equals("♠") && cardValue == spadesLength){
+                    faceDown = true;
+                }
+                if (faceDown != false) {
+                    cardSymbol = "*";
+                    suitSymbol = "*";
+
+                }*/
+
+                if (missingCard != true && tornCard != true && waterDamaged != true){
+                    System.out.println( "[" + cardSymbol + suitSymbol + "]");
+
                 }
 
 
-                if (cardSymbol.equals("5")){
-                    System.out.println("-"+cardSymbol+"-");
 /**
  * Clubs = ♣
  *  Diamonds = ♢
  *  Hearts = ♡
  *  Spades = ♠
  */
-                }
-
-                System.out.println( cardSymbol + suitSymbol);
 
 
 
@@ -265,3 +269,4 @@ public class LostCards {
     } //public static void main(String[] args) {
 
 } //class LostCards {
+
