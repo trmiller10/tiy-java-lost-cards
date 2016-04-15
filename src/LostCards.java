@@ -1,3 +1,5 @@
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 /**
  * You once had a nice deck of cards.
  *
@@ -58,4 +60,75 @@
  */
 public class LostCards {
 
+    public static void main(String[] args){
+        //create a list of card values that go from 1 to 13, incrementing
+        for( int cardValue = 1 ; cardValue <= 13 ; cardValue++){
+            //creates a string 'cardSymbol' and initializes it
+            String cardSymbol = new String();
+            //following: transmutes card integers to respective cardSymbols
+            //*this may not work as we move forward into assigning conditions to groups of cards
+            if ( cardValue == 1) {
+                cardSymbol = "A";
+            } else if ( cardValue == 2 ) {
+                cardSymbol = "2";
+            } else if ( cardValue == 3) {
+                cardSymbol = "3";
+            } else if ( cardValue == 4) {
+                cardSymbol = "4";
+            } else if ( cardValue == 5) {
+                cardSymbol = "5";
+            } else if ( cardValue == 6) {
+                cardSymbol = "6";
+            } else if ( cardValue == 7) {
+                cardSymbol = "7";
+            } else if ( cardValue == 8) {
+                cardSymbol = "8";
+            } else if ( cardValue == 9) {
+                cardSymbol = "9";
+            } else if ( cardValue == 10) {
+                cardSymbol = "t";
+            } else if ( cardValue == 11) {
+                cardSymbol = "J";
+            } else if ( cardValue == 12) {
+                cardSymbol = "Q";
+            } else if ( cardValue == 13) {
+                cardSymbol = "K";
+            }
+
+            //create a list of suit values that go from 1 to 4, incrementing
+            for( int suitIdentifier = 1 ; suitIdentifier <= 4 ; suitIdentifier++){
+
+                //define suitSymbol as a variable that will represent suit symbol
+                char suitSymbol;
+
+                //if suitIdentifier is generated as 1, assign a ♣
+                if( suitIdentifier == 1) {
+                //assign a ♣
+                    suitSymbol = '♣';
+                //print cardValue ♣
+                    System.out.println(cardSymbol + " of " + suitSymbol);
+                    continue ;
+                }
+                if( suitIdentifier == 2) {
+                    suitSymbol = '♢';
+                    System.out.println(cardSymbol + " of " + suitSymbol);
+                    continue ;
+                }
+                if( suitIdentifier == 3) {
+                    suitSymbol = '♡';
+                    System.out.println(cardSymbol + " of " + suitSymbol);
+                    continue ;
+                }
+                if( suitIdentifier == 4) {
+                    suitSymbol = '♠';
+                    System.out.println(cardSymbol + " of " + suitSymbol);
+                    continue ;
+                }
+
+
+                }
+            }
+
+        }
 }
+
