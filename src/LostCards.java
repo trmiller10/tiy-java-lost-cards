@@ -62,211 +62,218 @@ public class LostCards {
 
     public static void main(String[] args) {
 
+            //create a list of suit values that go from 1 to 4, incrementing
+            for (int suitValue = 1; suitValue <= 4; suitValue++) {
 
+                //define suitSymbol as a variable that will represent suit symbol
+                String suitSymbol = new String();
 
-        //create a list of suit values that go from 1 to 4, incrementing
-        for (int suitValue = 1; suitValue <= 4; suitValue++) {
-
-            //define suitSymbol as a variable that will represent suit symbol
-            String suitSymbol = new String();
-
-            //if suitIdentifier is generated as 1, assign a ♣
-            if (suitValue == 1) {
-                //assign a ♣
-                suitSymbol = "♣";}
-
-            else if (suitValue == 2) {
-                suitSymbol = "♢";}
-
-            else if (suitValue == 3) {
-                suitSymbol = "♡";}
-
-            else if (suitValue == 4) {
-                suitSymbol = "♠";}
-
-
-            //create a list of card values that go from 1 to 13, incrementing
-            for (int cardValue = 1; cardValue <= 13; cardValue++) {
-                //creates a string 'cardSymbol' and initializes it
-                String cardSymbol = new String();
-                //following: assigns cardSymbols to respective integers
-
-
-                //****this section can be pared down****
-                if (cardValue == 1) {
-                    cardSymbol = "A";
-
-                } else if (cardValue == 2) {
-                    cardSymbol = "2";
-
-
-                } else if (cardValue == 3) {
-                    cardSymbol = "3";
-
-                } else if (cardValue == 4) {
-                    cardSymbol = "4";
-
-                } else if (cardValue == 5) {
-                    cardSymbol = "5";
-
-                } else if (cardValue == 6) {
-                    cardSymbol = "6";
-
-                } else if (cardValue == 7) {
-                    cardSymbol = "7";
-
-
-                } else if (cardValue == 8) {
-                    cardSymbol = "8";
-
-
-                } else if (cardValue == 9) {
-                    cardSymbol = "9";
-
-
-                } else if (cardValue == 10) {
-                    cardSymbol = "t";
-
-                } else if (cardValue == 11) {
-                    cardSymbol = "J";
-
-                } else if (cardValue == 12) {
-                    cardSymbol = "Q";
-
-                } else if (cardValue == 13) {
-                    cardSymbol = "K";
-                }
-
-                //define booleans so that we can manipulate output of 'outlier' cards
-                //false is default card; true is an outlier card
-
-                boolean missingCard = false;
-                boolean tornCard = false;
-                boolean waterDamaged = false;
-                boolean faceDown = false;
-                boolean faceCard = false;
-
-
-
-                //these remove missing cards
-                if (cardSymbol.equals("K") && suitSymbol.equals("♠")){
-                    System.out.println("Holy shit!");
-                    continue;
-                }
-                if (cardSymbol.equals("3") && suitSymbol.equals("♣")){
-                    System.out.println("Holy shit!");
-                    continue;
-                }
-                if (cardSymbol.equals("3") && suitSymbol.equals("♡")){
-                    System.out.println("Holy shit!");
-                    continue;
-                }
-                if (cardSymbol.equals("3") && suitSymbol.equals("♠")){
-                    System.out.println("Holy shit!");
-                    continue;
-                }
-                //this checks if a card is a face card (non-numeric)
-                if (cardSymbol.equals("A") || cardSymbol.equals("J") || cardSymbol.equals("Q") || cardSymbol.equals("K")) {
-                    faceCard = true;
-                }
-
-                //this checks if a card is torn by checking if the card is divisible by 3 AND if the suit symbol is EITHER hearts or diamonds
-                if ( (cardValue % 3 == 0) && (suitSymbol.equals("♡") || suitSymbol.equals("♢")) ) {
-                    tornCard = true;
-                }
-
-                //if the card is a face card AND its suit is EITHER heart or clubs, then it is water damaged
-                if ((faceCard != false) && (suitSymbol.equals("♡") || suitSymbol.equals("♣"))){
-                    waterDamaged = true;
-                }
-                //check if card fulfills both torn and water damaged conditions
-                if (tornCard != false && waterDamaged != false){
-                    System.out.println("-~" + cardSymbol + suitSymbol + "~-");
-                }//if not both then we check if a card is not torn (false) ; it is torn (true),
-                // then it is output as such and the program returns to the start
-                else if (tornCard != false){
-                    System.out.println("-" + cardSymbol + suitSymbol + "-");
-                    continue;
-                }//now we check if a card is not water damaged (false); it is water damaged (true);
-                // program outputs the result if true and returns
-                else if (waterDamaged != false){
-                    System.out.println("~"+cardSymbol+suitSymbol+"~");
-                    continue;
+                //if suitIdentifier is generated as 1, assign a ♣
+                if (suitValue == 1) {
+                    //assign a ♣
+                    suitSymbol = "♣";
+                } else if (suitValue == 2) {
+                    suitSymbol = "♢";
+                } else if (suitValue == 3) {
+                    suitSymbol = "♡";
+                } else if (suitValue == 4) {
+                    suitSymbol = "♠";
                 }
 
 
+                //create a list of card values that go from 1 to 13, incrementing
+                for (int cardValue = 1; cardValue <= 13; cardValue++) {
+                    //creates a string 'cardSymbol' and initializes it
+                    String cardSymbol = new String();
+                    //following: assigns cardSymbols to respective integers
 
 
-                /*//here we determine how many characters are in each suit's word
+                    //****this section can be pared down****
+                    //use string.valueOf()
+                    if (cardValue == 1) {
+                        cardSymbol = "A";
 
-                //initialize a new string containing the suit word
-                String clubs = "clubs";
-                //set an integer equal to the suit word string run through a length method
-                int clubsLength = clubs.length();
-
-                String diamonds = "diamonds";
-                int diamondsLength = diamonds.length();
-
-                String hearts = "hearts";
-                int heartsLength = hearts.length();
-
-                String spades = "spades";
-                int spadesLength = spades.length();
+                    } else if (cardValue == 2) {
+                        cardSymbol = "2";
 
 
-                if (suitSymbol.equals("♣") && cardValue == clubsLength){
-                    faceDown = true;
-                }
-                if (suitSymbol.equals("♢") && cardValue == diamondsLength){
-                    faceDown = true;
-                }
-                if (suitSymbol.equals("♡") && cardValue == heartsLength){
-                    faceDown = true;
-                }
-                if (suitSymbol.equals("♠") && cardValue == spadesLength){
-                    faceDown = true;
-                }
-                if (faceDown != false) {
-                    cardSymbol = "*";
-                    suitSymbol = "*";
+                    } else if (cardValue == 3) {
+                        cardSymbol = "3";
 
-                }*/
+                    } else if (cardValue == 4) {
+                        cardSymbol = "4";
 
-                if (missingCard != true && tornCard != true && waterDamaged != true){
-                    System.out.println( "[" + cardSymbol + suitSymbol + "]");
+                    } else if (cardValue == 5) {
+                        cardSymbol = "5";
 
-                }
+                    } else if (cardValue == 6) {
+                        cardSymbol = "6";
+
+                    } else if (cardValue == 7) {
+                        cardSymbol = "7";
 
 
-/**
- * Clubs = ♣
- *  Diamonds = ♢
- *  Hearts = ♡
- *  Spades = ♠
- */
+                    } else if (cardValue == 8) {
+                        cardSymbol = "8";
 
 
+                    } else if (cardValue == 9) {
+                        cardSymbol = "9";
 
 
-                /**
-                 * Let's see if we can't use math to denote card condition
-                 */
+                    } else if (cardValue == 10) {
+                        cardSymbol = "t";
+
+                    } else if (cardValue == 11) {
+                        cardSymbol = "J";
+
+                    } else if (cardValue == 12) {
+                        cardSymbol = "Q";
+
+                    } else if (cardValue == 13) {
+                        cardSymbol = "K";
+                    }
+
+                    //define booleans so that we can manipulate output of 'outlier' cards
+                    //false is default card; true is an outlier card
+
+                    boolean missingCard = false;
+                    boolean tornCard = false;
+                    boolean waterDamaged = false;
+                    boolean faceDown = false;
+                    boolean faceCard = false;
 
 
-                /*
-                 * Make a loop that removes completely King of Spades, 3 of Clubs, 3 of Diamonds, 3 of Hearts.
-                 */
+                    //these remove missing cards
+                    if (cardSymbol.equals("K") && suitSymbol.equals("♠")) {
+                        continue;
+                    }
+                    if (cardSymbol.equals("3") && suitSymbol.equals("♣")) {
+                        continue;
+                    }
+                    if (cardSymbol.equals("3") && suitSymbol.equals("♡")) {
+                        continue;
+                    }
+                    if (cardSymbol.equals("3") && suitSymbol.equals("♠")) {
+                        continue;
+                    }
+                    //here we determine how many characters are in each suit's word
+
+                    //initialize a new string containing the suit word
+                    String clubs = "clubs";
+                    //set an integer equal to the suit word string run through a length method
+                    int clubsLength = clubs.length();
+
+                    String diamonds = "diamonds";
+                    int diamondsLength = diamonds.length();
+
+                    String hearts = "hearts";
+                    int heartsLength = hearts.length();
+
+                    String spades = "spades";
+                    int spadesLength = spades.length();
 
 
+                    if (suitSymbol.equals("♣") && cardValue == clubsLength) {
+                        faceDown = true;
+                    }
+                    if (suitSymbol.equals("♢") && cardValue == diamondsLength) {
+                        faceDown = true;
+                    }
+                    if (suitSymbol.equals("♡") && cardValue == heartsLength) {
+                        faceDown = true;
+                    }
+                    if (suitSymbol.equals("♠") && cardValue == spadesLength) {
+                        faceDown = true;
+                    }
+                    if (faceDown != false) {
+                        String faceDownCardSuit = "**";
+
+                        if (cardSymbol.equals("A") || cardSymbol.equals("J") || cardSymbol.equals("Q") || cardSymbol.equals("K")) {
+                            faceCard = true;
+                        }
+                        if ((cardValue % 3 == 0) && (suitSymbol.equals("♡") || suitSymbol.equals("♢"))) {
+                            tornCard = true;
+                        }
+
+                        //if the card is a face card AND its suit is EITHER heart or clubs, then it is water damaged
+                        if ((faceCard != false) && (suitSymbol.equals("♡") || suitSymbol.equals("♣"))) {
+                            waterDamaged = true;
+                        }
+
+                        if (tornCard != false && waterDamaged != false) {
+                            System.out.println("-~" + cardSymbol + suitSymbol + "~-");
+                        }
+                        //then we check if a card is not torn (false) ; it is torn (true), then then it is output as such and the program returns to the start
+
+                        else if (tornCard != false && faceDown != false) {
+                            System.out.println("-" + faceDownCardSuit + "-");
+                            continue;
+                        } else if (tornCard != false) {
+                            System.out.println("-" + cardSymbol + suitSymbol + "-");
+                            continue;
+                        }//now we check if a card is not water damaged (false); it is water damaged (true); program outputs the result if true and returns
+
+                        else if (waterDamaged != false && faceDown != false) {
+                            System.out.println("~" + faceDownCardSuit + "~");
+                            continue;
+                        } else if (waterDamaged != false) {
+                            System.out.println("~" + cardSymbol + suitSymbol + "~");
+                            continue;
+                        }
 
 
+                        if (missingCard != true && tornCard != true && waterDamaged != true && faceDown != false) {
+                            System.out.println("[" + faceDownCardSuit + "]");
+                            continue;
+                        }
+                    }
 
 
-            }//for (int cardValue = 1; cardValue <= 13; cardValue++) {
+                    //this checks if a card is a face card (non-numeric)
 
-        } //for (int suitIdentifier = 1; suitIdentifier <= 4; suitIdentifier++) {
 
-    } //public static void main(String[] args) {
+                    if (cardSymbol.equals("A") || cardSymbol.equals("J") || cardSymbol.equals("Q") || cardSymbol.equals("K")) {
+                        faceCard = true;
+                    }
 
-} //class LostCards {
+                    //this checks if a card is torn by checking if the card is divisible by 3 AND if the suit symbol is EITHER hearts or diamonds
+                    if ((cardValue % 3 == 0) && (suitSymbol.equals("♡") || suitSymbol.equals("♢"))) {
+                        tornCard = true;
+                    }
+
+                    //if the card is a face card AND its suit is EITHER heart or clubs, then it is water damaged
+                    if ((faceCard != false) && (suitSymbol.equals("♡") || suitSymbol.equals("♣"))) {
+                        waterDamaged = true;
+                    }
+
+                    if (tornCard != false && waterDamaged != false) {
+                        System.out.println("-~" + cardSymbol + suitSymbol + "~-");
+                    }
+                    //then we check if a card is not torn (false) ; it is torn (true), then then it is output as such and the program returns to the start
+
+                    else if (tornCard != false) {
+                        System.out.println("-" + cardSymbol + suitSymbol + "-");
+                        continue;
+                    }//now we check if a card is not water damaged (false); it is water damaged (true); program outputs the result if true and returns
+
+                    else if (waterDamaged != false) {
+                        System.out.println("~" + cardSymbol + suitSymbol + "~");
+                        continue;
+                    }
+
+
+                    if (missingCard != true && tornCard != true && waterDamaged != true) {
+                        System.out.println("[" + cardSymbol + suitSymbol + "]");
+
+                    }
+
+
+                }//for (int cardValue = 1; cardValue <= 13; cardValue++) {
+
+            } //for (int suitIdentifier = 1; suitIdentifier <= 4; suitIdentifier++) {
+
+        } //public static void main(String[] args) {
+
+    } //class LostCards {
 
