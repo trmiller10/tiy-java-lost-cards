@@ -62,23 +62,27 @@ public class LostCards {
 
     public static void main(String[] args) {
 
-            //create a list of suit values that go from 1 to 4, incrementing
-            for (int suitValue = 1; suitValue <= 4; suitValue++) {
+        int cardIterations = 0;
 
-                //define suitSymbol as a variable that will represent suit symbol
-                String suitSymbol = new String();
+        //create a list of suit values that go from 1 to 4, incrementing
+        for (int suitValue = 1; suitValue <= 4; suitValue++) {
 
-                //if suitIdentifier is generated as 1, assign a ♣
-                if (suitValue == 1) {
-                    //assign a ♣
-                    suitSymbol = "♣";
-                } else if (suitValue == 2) {
-                    suitSymbol = "♢";
-                } else if (suitValue == 3) {
-                    suitSymbol = "♡";
-                } else if (suitValue == 4) {
-                    suitSymbol = "♠";
-                }
+
+            //define suitSymbol as a variable that will represent suit symbol
+            String suitSymbol = new String();
+
+            //if suitIdentifier is generated as 1, assign a ♣
+            if (suitValue == 1) {
+                //assign a ♣
+                suitSymbol = "♣";
+            } else if (suitValue == 2) {
+                suitSymbol = "♢";
+            } else if (suitValue == 3) {
+                suitSymbol = "♡";
+            } else if (suitValue == 4) {
+                suitSymbol = "♠";
+            }
+
 
 
                 //create a list of card values that go from 1 to 13, incrementing
@@ -134,6 +138,8 @@ public class LostCards {
                         cardSymbol = "K";
                     }
 
+
+
                     //define booleans so that we can manipulate output of 'outlier' cards
                     //false is default card; true is an outlier card
 
@@ -157,6 +163,12 @@ public class LostCards {
                     if (cardSymbol.equals("3") && suitSymbol.equals("♠")) {
                         continue;
                     }
+
+                    //Counts how many cards program runs through; beneath the if loops above as they are removed from the deck
+                    if (cardIterations < 50){
+                        cardIterations++;
+                    }
+
                     //here we determine how many characters are in each suit's word
 
                     //initialize a new string containing the suit word
@@ -271,9 +283,9 @@ public class LostCards {
 
                 }//for (int cardValue = 1; cardValue <= 13; cardValue++) {
 
-            } //for (int suitIdentifier = 1; suitIdentifier <= 4; suitIdentifier++) {
 
+            } //for (int suitIdentifier = 1; suitIdentifier <= 4; suitIdentifier++) {
+        System.out.println(cardIterations);
         } //public static void main(String[] args) {
 
     } //class LostCards {
-
